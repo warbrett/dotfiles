@@ -1,3 +1,36 @@
+" Vundle stuff
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'ervandew/supertab'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'eiginn/netrw'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'w0ng/vim-hybrid'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 set backspace=indent,eol,start " backspace over everything in insert mode
 set laststatus=2                  " always show status bar
 set wildmenu                      " enable bash style tab completion
@@ -9,6 +42,7 @@ syntax on
 let g:hybrid_use_Xresources = 1
 set t_Co=256
 
+set background=dark
 colorscheme hybrid
 set number
 
@@ -36,7 +70,7 @@ runtime macros/matchit.vim
 
 "Deal with that pesky end of line issues
 "set virtualedit=onemore
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " JSX Indentation in js files
 let g:jsx_ext_required = 0
@@ -54,19 +88,12 @@ if version >= 700
   au InsertLeave * hi StatusLine ctermfg=235 ctermbg=2
 endif
 
-" <Ctrl-^> should go to the last file, not to netrw.
-let g:netrw_altfile = 1
-let g:EditorConfig_core_mode = 'external_command'
 " syntastic stuff
 let g:syntastic_javascript_checkers = ['standard']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
 " Set up some custom colors
 highlight clear SignColumn
 highlight VertSplit    ctermbg=236
@@ -79,41 +106,3 @@ highlight Search       ctermbg=1   ctermfg=3
 highlight Pmenu        ctermbg=240 ctermfg=12
 highlight PmenuSel     ctermbg=3   ctermfg=1
 highlight SpellBad     ctermbg=0   ctermfg=1
-
-" Vundle stuff
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" pathogen;
-execute pathogen#infect()
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" The following are examples of different formats supported.
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
-"Plugin 'pangloss/vim-javascript'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'eiginn/netrw'
-"Plugin 'yosiat/oceanic-next-vim'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
